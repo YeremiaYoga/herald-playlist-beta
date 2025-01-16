@@ -47,19 +47,6 @@ function heraldPlaylist_dialogPlaylist() {
   const content = `
   <form>
     <div class="heraldPlaylist-formGrup">
-      <label for="heraldPlaylist-music-volume">Music Volume: <span id="heraldPlaylist-music-volume-value">${(
-        globalSettings.musicVolume * 100
-      ).toFixed(0)}%</span></label>
-      <div class="heraldPlaylist-volumeControl">
-        <input type="range" id="heraldPlaylist-music-volume" name="musicVolume" min="0" max="1" step="0.01" value="${
-          globalSettings.musicVolume
-        }">
-        <input type="number" id="heraldPlaylist-music-volume-input" value="${(
-          globalSettings.musicVolume * 100
-        ).toFixed(0)}" min="0" max="100" step="1">
-      </div>
-    </div>
-    <div class="heraldPlaylist-formGrup">
       <label for="heraldPlaylist-ambient-volume">Ambient Volume: <span id="heraldPlaylist-ambient-volume-value">${(
         globalSettings.ambientVolume * 100
       ).toFixed(0)}%</span></label>
@@ -108,7 +95,6 @@ function heraldPlaylist_dialogPlaylist() {
           game.settings.set("core", "globalPlaylistVolume", musicVolume);
           game.settings.set("core", "globalAmbientVolume", ambientVolume);
           game.settings.set("core", "globalInterfaceVolume", interfaceVolume);
-          ui.notifications.info("Volume settings updated.");
         },
       },
       cancel: {
