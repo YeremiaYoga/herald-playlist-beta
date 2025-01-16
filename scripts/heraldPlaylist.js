@@ -47,7 +47,7 @@ function heraldPlaylist_dialogPlaylist() {
   const content = `
   <form>
     <div class="heraldPlaylist-formGrup">
-      <label for="heraldPlaylist-ambient-volume">Ambient Volume: <span id="heraldPlaylist-ambient-volume-value">${(
+      <label for="heraldPlaylist-ambient-volume">Environment Volume: <span id="heraldPlaylist-ambient-volume-value">${(
         globalSettings.ambientVolume * 100
       ).toFixed(0)}%</span></label>
       <div class="heraldPlaylist-volumeControl">
