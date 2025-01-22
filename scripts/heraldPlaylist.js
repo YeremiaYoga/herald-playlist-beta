@@ -28,7 +28,6 @@ function heraldPlaylist_renderButton() {
         heraldPlaylist_dialogPlaylist();
       });
 
-      console.log("jalan");
       playlist.appendChild(playlistButton);
       document.body.appendChild(playlist);
     })
