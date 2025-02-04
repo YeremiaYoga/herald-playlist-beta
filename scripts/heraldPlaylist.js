@@ -23,7 +23,7 @@ function heraldPlaylist_renderButton() {
       const playlistButton = document.createElement("button");
       playlistButton.id = "heraldPlaylist-playlistButton";
       playlistButton.classList.add("heraldPlaylist-playlistButton");
-      playlistButton.textContent = "🎵";
+      playlistButton.innerHTML = "<i class='fas fa-music'></i>";
       playlistButton.addEventListener("click", function () {
         heraldPlaylist_dialogPlaylist();
       });
@@ -45,6 +45,14 @@ function heraldPlaylist_dialogPlaylist() {
 
   const content = `
   <form>
+     <div class="heraldPlaylist-formGrup">
+      <label>Music Volume:</label>
+      <div class="heraldPlaylist-volumeControl">
+        <button type="button" id="heraldPlaylist-music-low">Low</button>
+        <button type="button" id="heraldPlaylist-music-medium">Medium</button>
+        <button type="button" id="heraldPlaylist-music-high">High</button>
+      </div>
+    </div>
     <div class="heraldPlaylist-formGrup">
       <label for="heraldPlaylist-ambient-volume">Environment Volume: <span id="heraldPlaylist-ambient-volume-value">${(
         globalSettings.ambientVolume * 100
@@ -101,6 +109,16 @@ function heraldPlaylist_dialogPlaylist() {
       },
     },
     render: (html) => {
+      html.find("#heraldPlaylist-music-low").on("click", function () {
+        game.settings.set("core", "globalPlaylistVolume", 0.35);
+      });
+      html.find("#heraldPlaylist-music-medium").on("click", function () {
+        game.settings.set("core", "globalPlaylistVolume", 0.65);
+      });
+      html.find("#heraldPlaylist-music-high").on("click", function () {
+        game.settings.set("core", "globalPlaylistVolume", 1);
+      });
+
       html.find("input[type=range]").on("input", function () {
         const volumeValue = (parseFloat(this.value) * 100).toFixed(0);
         html.find(`#${this.id}-value`).text(`${volumeValue}%`);
